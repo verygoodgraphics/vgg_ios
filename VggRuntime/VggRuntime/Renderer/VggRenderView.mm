@@ -19,7 +19,8 @@ using namespace VGG;
 {
     NSString* _modelFilePath;
     std::unique_ptr<VGG::MetalComponent> _component;
-    bool _init;
+    bool _initialized;
+    CGSize _size;
 }
 
 
@@ -35,8 +36,35 @@ using namespace VGG;
     auto metalDevice = MTLCreateSystemDefaultDevice();
     auto result = [super initWithFrame:frameRect device:metalDevice];
     _component.reset(new VGG::MetalComponent());
+    _size = self.frame.size;
     
     return result;
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    if(!_initialized) {
+        [self initOnce];
+        
+    } else {
+        auto newSize = self.frame.size;
+        if(!CGSizeEqualToSize(_size, newSize)) {
+            _size = newSize;
+            
+            UEvent evt;
+            evt.window.type = VGG_WINDOWEVENT;
+            evt.window.event = VGG_WINDOWEVENT_SIZE_CHANGED;
+            evt.window.data1 = _size.width;
+            evt.window.data2 = _size.height;
+            evt.window.drawableWidth = _size.width * self.contentScaleFactor;
+            evt.window.drawableHeight = _size.height * self.contentScaleFactor;
+            _component->onEvent(evt);
+        }
+        
+    }
+
 }
 
 - (void)drawRect:(CGRect)rect
@@ -44,11 +72,8 @@ using namespace VGG;
     [super drawRect:rect];
     
     if(_modelFilePath) {
-        [self initOnce];
-        
         _component->run();
     }
-
 }
 
 - (void)setModel:(NSString*)filePath
@@ -57,11 +82,10 @@ using namespace VGG;
 }
 
 - (void)initOnce {
-    static bool initialized = false;
-    if(initialized) {
+    if(_initialized) {
         return;
     }
-    initialized = true;
+    _initialized = true;
     
     // config view
     [self setDepthStencilPixelFormat:MTLPixelFormatDepth32Float_Stencil8];
