@@ -76,6 +76,7 @@ using namespace VGG;
     }
 }
 
+// MARK: -
 - (void)setModel:(NSString*)filePath
 {
     _modelFilePath = filePath;
@@ -94,6 +95,61 @@ using namespace VGG;
     
     _component->setView((__bridge MetalComponent::MTLHandle)self);
     _component->load(_modelFilePath.UTF8String);
+}
+
+// MARK: -
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    auto touch = [touches anyObject];
+    if(!touch) {
+        return;
+    }
+    
+    auto location = [touch locationInView:self];
+    
+    UEvent evt;
+    evt.touch.type = VGG_TOUCHDOWN;
+    evt.touch.windowX = location.x;
+    evt.touch.windowY = location.y;
+    
+    _component->onEvent(evt);
+    
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    auto touch = [touches anyObject];
+    if(!touch) {
+        return;
+    }
+    
+    auto previousLocation = [touch previousLocationInView:self];
+    auto location = [touch locationInView:self];
+    
+    UEvent evt;
+    evt.touch.type = VGG_TOUCHMOTION;
+    evt.touch.windowX = location.x;
+    evt.touch.windowY = location.y;
+    evt.touch.xrel = location.x - previousLocation.x;
+    evt.touch.yrel = location.y - previousLocation.y;
+    
+    _component->onEvent(evt);
+    
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    auto touch = [touches anyObject];
+    if(!touch) {
+        return;
+    }
+    
+    auto location = [touch locationInView:self];
+    
+    UEvent evt;
+    evt.touch.type = VGG_TOUCHUP;
+    evt.touch.windowX = location.x;
+    evt.touch.windowY = location.y;
+    
+    _component->onEvent(evt);
+
 }
 
 @end
