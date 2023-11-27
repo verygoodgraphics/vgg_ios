@@ -65,7 +65,7 @@ using namespace VGG;
     
     // config view
     [self setDepthStencilPixelFormat:MTLPixelFormatDepth32Float_Stencil8];
-    [self setColorPixelFormat:MTLPixelFormatBGRA8Unorm];
+    [self setColorPixelFormat:MTLPixelFormatRGBA8Unorm];
     [self setSampleCount:1];
     
     _component->setView((__bridge MetalComponent::MTLHandle)self);
