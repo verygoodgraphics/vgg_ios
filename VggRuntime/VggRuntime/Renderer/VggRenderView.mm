@@ -76,6 +76,24 @@ using namespace VGG;
     }
 }
 
+// MARK: - Setter
+- (void)setVggDelegate:(id<VggDelegate>)vggDelegate
+{
+    _vggDelegate = vggDelegate;
+    if (_vggDelegate) {
+        __weak typeof(self) weakSelf = self;
+        _component->setEventListener([weakSelf](std::string type, std::string path) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            if (strongSelf) {
+                [strongSelf.vggDelegate handleVggEvent: [NSString stringWithUTF8String:type.c_str()]
+                                                  path: [NSString stringWithUTF8String:path.c_str()]];
+            }
+        });
+    } else {
+        _component->setEventListener(nullptr);
+    }
+}
+
 // MARK: -
 - (void)setModel:(NSString*)filePath
 {

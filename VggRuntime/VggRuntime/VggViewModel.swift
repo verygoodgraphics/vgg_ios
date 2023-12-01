@@ -12,11 +12,14 @@ import SwiftUI
 open class VggViewModel {
     var vggModel: VggModel?
     var vggView: VggView?
+    weak var delegate: VggDelegate?
 
     public init(
-        filePath: String
+        filePath: String,
+        delegate:VggDelegate? = nil
     ) {
         vggModel = VggModel(filePath: filePath)
+        self.delegate = delegate
     }
 
     open func createVggView() -> VggView {
@@ -29,6 +32,9 @@ open class VggViewModel {
         }
         
         vggView = view
+        if let delegate = delegate {
+            view.vggDelegate = delegate
+        }
         
         return view
     }

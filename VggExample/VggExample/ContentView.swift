@@ -9,10 +9,14 @@ import SwiftUI
 import VggRuntime
 
 struct ContentView: View {
+    var delegate = MyVggDegate()
     var body: some View {
-        
-        if let filePath = Bundle.main.path(forResource: "vgg", ofType: "daruma", inDirectory: "Assets") {
-            return AnyView(VggViewModel(filePath: filePath).view())
+        if let filePath = Bundle.main.path(forResource: "vgg",
+                                           ofType: "daruma",
+                                           inDirectory: "Assets") {
+            let vggViewModel = VggViewModel(filePath: filePath,
+                                            delegate: delegate)
+            return AnyView(vggViewModel.view())
             
         } else {
             return AnyView(
@@ -22,6 +26,13 @@ struct ContentView: View {
                     .padding())
         }
 
+    }
+    
+}
+
+class MyVggDegate: VggDelegate {
+    func handleVggEvent(_ type: String, path: String) {
+        print(type, path)
     }
 }
 

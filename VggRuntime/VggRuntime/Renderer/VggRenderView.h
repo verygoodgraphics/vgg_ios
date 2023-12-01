@@ -11,7 +11,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol VggDelegate
+- (void)handleVggEvent:(NSString*)type path:(NSString*)path;
+@end
+
 @interface VggRenderView : MTKView
+
+@property (nonatomic, weak) id<VggDelegate> vggDelegate;
 
 - (instancetype)initWithFrame:(CGRect)frameRect;
 
