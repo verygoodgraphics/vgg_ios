@@ -396,7 +396,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = (
-					"-lvgg_component",
+					"-lvgg_container",
 					"-lvgg_application",
 					"-lvgg_usecase",
 					"-lvgg_domain",
@@ -456,7 +456,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = (
-					"-lvgg_component",
+					"-lvgg_container",
 					"-lvgg_application",
 					"-lvgg_usecase",
 					"-lvgg_domain",

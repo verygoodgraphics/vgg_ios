@@ -8,7 +8,7 @@
 
 #import "VggRenderView.h"
 
-#import "VGG/MetalComponent.hpp"
+#import "VGG/MetalContainer.hpp"
 
 #import <memory>
 #import <string>
@@ -18,7 +18,7 @@ using namespace VGG;
 @implementation VggRenderView
 {
     NSString* _modelFilePath;
-    std::unique_ptr<VGG::MetalComponent> _component;
+    std::unique_ptr<VGG::MetalContainer> _container;
     bool _initialized;
     CGSize _size;
 }
@@ -35,7 +35,7 @@ using namespace VGG;
 {
     auto metalDevice = MTLCreateSystemDefaultDevice();
     auto result = [super initWithFrame:frameRect device:metalDevice];
-    _component.reset(new VGG::MetalComponent());
+    _container.reset(new VGG::MetalContainer());
     _size = self.frame.size;
     
     return result;
@@ -60,7 +60,7 @@ using namespace VGG;
             evt.window.data2 = _size.height;
             evt.window.drawableWidth = _size.width * self.contentScaleFactor;
             evt.window.drawableHeight = _size.height * self.contentScaleFactor;
-            _component->onEvent(evt);
+            _container->onEvent(evt);
         }
         
     }
@@ -72,7 +72,7 @@ using namespace VGG;
     [super drawRect:rect];
     
     if(_modelFilePath) {
-        _component->run();
+        _container->run();
     }
 }
 
@@ -82,7 +82,7 @@ using namespace VGG;
     _vggDelegate = vggDelegate;
     if (_vggDelegate) {
         __weak typeof(self) weakSelf = self;
-        _component->setEventListener([weakSelf](std::string type, std::string path) {
+        _container->setEventListener([weakSelf](std::string type, std::string path) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
             if (strongSelf) {
                 [strongSelf.vggDelegate handleVggEvent: [NSString stringWithUTF8String:type.c_str()]
@@ -90,7 +90,7 @@ using namespace VGG;
             }
         });
     } else {
-        _component->setEventListener(nullptr);
+        _container->setEventListener(nullptr);
     }
 }
 
@@ -111,8 +111,8 @@ using namespace VGG;
     [self setColorPixelFormat:MTLPixelFormatRGBA8Unorm];
     [self setSampleCount:1];
     
-    _component->setView((__bridge MetalComponent::MTLHandle)self);
-    _component->load(_modelFilePath.UTF8String);
+    _container->setView((__bridge MetalContainer::MTLHandle)self);
+    _container->load(_modelFilePath.UTF8String);
 }
 
 // MARK: -
@@ -129,7 +129,7 @@ using namespace VGG;
     evt.touch.windowX = location.x;
     evt.touch.windowY = location.y;
     
-    _component->onEvent(evt);
+    _container->onEvent(evt);
     
 }
 
@@ -149,7 +149,7 @@ using namespace VGG;
     evt.touch.xrel = location.x - previousLocation.x;
     evt.touch.yrel = location.y - previousLocation.y;
     
-    _component->onEvent(evt);
+    _container->onEvent(evt);
     
 }
 
@@ -166,7 +166,7 @@ using namespace VGG;
     evt.touch.windowX = location.x;
     evt.touch.windowY = location.y;
     
-    _component->onEvent(evt);
+    _container->onEvent(evt);
 
 }
 
