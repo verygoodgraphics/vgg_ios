@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB0A7CA72B1DCF0800D349BE /* NodeMobile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0A7CA62B1DCF0800D349BE /* NodeMobile.xcframework */; };
+		BB0A7CA82B1DCF0800D349BE /* NodeMobile.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB0A7CA62B1DCF0800D349BE /* NodeMobile.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BB3C8C2D2B05B3E1003D1061 /* VggRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3C8C222B05B3E1003D1061 /* VggRuntime.framework */; };
 		BB3C8C322B05B3E1003D1061 /* VggRuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C312B05B3E1003D1061 /* VggRuntimeTests.swift */; };
 		BB3C8C332B05B3E1003D1061 /* VggRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = BB3C8C252B05B3E1003D1061 /* VggRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,7 +29,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BB0A7CA92B1DCF0800D349BE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BB0A7CA82B1DCF0800D349BE /* NodeMobile.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		BB0A7CA62B1DCF0800D349BE /* NodeMobile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NodeMobile.xcframework; path = external/NodeMobile.xcframework; sourceTree = "<group>"; };
 		BB3C8C222B05B3E1003D1061 /* VggRuntime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VggRuntime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3C8C252B05B3E1003D1061 /* VggRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VggRuntime.h; sourceTree = "<group>"; };
 		BB3C8C2C2B05B3E1003D1061 /* VggRuntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VggRuntimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB0A7CA72B1DCF0800D349BE /* NodeMobile.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,12 +76,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB0A7CA52B1DCF0800D349BE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB0A7CA62B1DCF0800D349BE /* NodeMobile.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BB3C8C182B05B3E1003D1061 = {
 			isa = PBXGroup;
 			children = (
 				BB3C8C242B05B3E1003D1061 /* VggRuntime */,
 				BB3C8C302B05B3E1003D1061 /* VggRuntimeTests */,
 				BB3C8C232B05B3E1003D1061 /* Products */,
+				BB0A7CA52B1DCF0800D349BE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +155,7 @@
 				BB3C8C1E2B05B3E1003D1061 /* Sources */,
 				BB3C8C1F2B05B3E1003D1061 /* Frameworks */,
 				BB3C8C202B05B3E1003D1061 /* Resources */,
+				BB0A7CA92B1DCF0800D349BE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -402,6 +430,7 @@
 					"-lvgg_domain",
 					"-lvgg_layer",
 					"-lvgg_utility",
+					"-lvgg_libnode_stub",
 					"-lflexbox",
 					"-lgrid_layout",
 					"-lyogacore",
@@ -462,6 +491,7 @@
 					"-lvgg_domain",
 					"-lvgg_layer",
 					"-lvgg_utility",
+					"-lvgg_libnode_stub",
 					"-lflexbox",
 					"-lgrid_layout",
 					"-lyogacore",
