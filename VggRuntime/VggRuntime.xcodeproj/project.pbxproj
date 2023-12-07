@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		BB0A7CA72B1DCF0800D349BE /* NodeMobile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0A7CA62B1DCF0800D349BE /* NodeMobile.xcframework */; };
 		BB0A7CA82B1DCF0800D349BE /* NodeMobile.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB0A7CA62B1DCF0800D349BE /* NodeMobile.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BB0A7CAD2B1EFF0700D349BE /* VggModel.h in Headers */ = {isa = PBXBuildFile; fileRef = BB0A7CAB2B1EFF0700D349BE /* VggModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BB0A7CAE2B1EFF0700D349BE /* VggModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB0A7CAC2B1EFF0700D349BE /* VggModel.mm */; };
 		BB3C8C2D2B05B3E1003D1061 /* VggRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3C8C222B05B3E1003D1061 /* VggRuntime.framework */; };
 		BB3C8C322B05B3E1003D1061 /* VggRuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C312B05B3E1003D1061 /* VggRuntimeTests.swift */; };
 		BB3C8C332B05B3E1003D1061 /* VggRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = BB3C8C252B05B3E1003D1061 /* VggRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -16,7 +18,6 @@
 		BB3C8C772B05B8BD003D1061 /* VggRenderView.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C752B05B8BD003D1061 /* VggRenderView.mm */; };
 		BB3C8C792B05B9F1003D1061 /* VggView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C782B05B9F1003D1061 /* VggView.swift */; };
 		BB3C8C7B2B05BE3B003D1061 /* VggViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C7A2B05BE3B003D1061 /* VggViewModel.swift */; };
-		BB3C8C7D2B05BE4A003D1061 /* VggModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C7C2B05BE4A003D1061 /* VggModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		BB0A7CA62B1DCF0800D349BE /* NodeMobile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = NodeMobile.xcframework; path = external/NodeMobile.xcframework; sourceTree = "<group>"; };
+		BB0A7CAB2B1EFF0700D349BE /* VggModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VggModel.h; sourceTree = "<group>"; };
+		BB0A7CAC2B1EFF0700D349BE /* VggModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = VggModel.mm; sourceTree = "<group>"; };
 		BB3C8C222B05B3E1003D1061 /* VggRuntime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VggRuntime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3C8C252B05B3E1003D1061 /* VggRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VggRuntime.h; sourceTree = "<group>"; };
 		BB3C8C2C2B05B3E1003D1061 /* VggRuntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VggRuntimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,7 +56,6 @@
 		BB3C8C752B05B8BD003D1061 /* VggRenderView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = VggRenderView.mm; sourceTree = "<group>"; };
 		BB3C8C782B05B9F1003D1061 /* VggView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VggView.swift; sourceTree = "<group>"; };
 		BB3C8C7A2B05BE3B003D1061 /* VggViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VggViewModel.swift; sourceTree = "<group>"; };
-		BB3C8C7C2B05BE4A003D1061 /* VggModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VggModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BB0A7CAA2B1EFC9D00D349BE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BB0A7CAB2B1EFF0700D349BE /* VggModel.h */,
+				BB0A7CAC2B1EFF0700D349BE /* VggModel.mm */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BB3C8C182B05B3E1003D1061 = {
 			isa = PBXGroup;
 			children = (
@@ -109,7 +120,7 @@
 				BB3C8C252B05B3E1003D1061 /* VggRuntime.h */,
 				BB3C8C7A2B05BE3B003D1061 /* VggViewModel.swift */,
 				BB3C8C782B05B9F1003D1061 /* VggView.swift */,
-				BB3C8C7C2B05BE4A003D1061 /* VggModel.swift */,
+				BB0A7CAA2B1EFC9D00D349BE /* Model */,
 				BB3C8C732B05B7E0003D1061 /* Renderer */,
 			);
 			path = VggRuntime;
@@ -140,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB3C8C332B05B3E1003D1061 /* VggRuntime.h in Headers */,
+				BB0A7CAD2B1EFF0700D349BE /* VggModel.h in Headers */,
 				BB3C8C762B05B8BD003D1061 /* VggRenderView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,8 +259,8 @@
 			files = (
 				BB3C8C7B2B05BE3B003D1061 /* VggViewModel.swift in Sources */,
 				BB3C8C772B05B8BD003D1061 /* VggRenderView.mm in Sources */,
-				BB3C8C7D2B05BE4A003D1061 /* VggModel.swift in Sources */,
 				BB3C8C792B05B9F1003D1061 /* VggView.swift in Sources */,
+				BB0A7CAE2B1EFF0700D349BE /* VggModel.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

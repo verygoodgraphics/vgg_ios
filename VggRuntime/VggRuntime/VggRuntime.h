@@ -15,6 +15,7 @@ FOUNDATION_EXPORT const unsigned char VggRuntimeVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <VggRuntime/PublicHeader.h>
 
+#import <VggRuntime/VggModel.h>
 #import <VggRuntime/VggRenderView.h>
 
 

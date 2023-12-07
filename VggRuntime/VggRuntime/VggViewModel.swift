@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 open class VggViewModel {
-    var vggModel: VggModel?
+    public private(set) var vggModel: VggModel?
     var vggView: VggView?
     weak var delegate: VggDelegate?
 
