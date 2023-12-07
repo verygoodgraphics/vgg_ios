@@ -8,14 +8,12 @@
 import SwiftUI
 import VggRuntime
 
-struct ContentView: View {
-    var delegate = MyVggDegate()
+struct VggJsCounter: View {
     var body: some View {
-        if let filePath = Bundle.main.path(forResource: "vgg",
+        if let filePath = Bundle.main.path(forResource: "counter_with_js",
                                            ofType: "daruma",
                                            inDirectory: "Assets") {
-            let vggViewModel = VggViewModel(filePath: filePath,
-                                            delegate: delegate)
+            let vggViewModel = VggViewModel(filePath: filePath)
             return AnyView(vggViewModel.view())
             
         } else {
@@ -29,10 +27,3 @@ struct ContentView: View {
     }
     
 }
-
-class MyVggDegate: VggDelegate {
-    func handleVggEvent(_ type: String, path: String) {
-        print(type, path)
-    }
-}
-

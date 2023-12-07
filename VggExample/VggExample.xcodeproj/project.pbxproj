@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		BB3C8C492B05B56E003D1061 /* VggExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C482B05B56E003D1061 /* VggExampleApp.swift */; };
-		BB3C8C4B2B05B56E003D1061 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C4A2B05B56E003D1061 /* ContentView.swift */; };
+		BB3C8C4B2B05B56E003D1061 /* VggJsCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C4A2B05B56E003D1061 /* VggJsCounter.swift */; };
 		BB3C8C4D2B05B56F003D1061 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB3C8C4C2B05B56F003D1061 /* Assets.xcassets */; };
 		BB3C8C512B05B56F003D1061 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB3C8C502B05B56F003D1061 /* Preview Assets.xcassets */; };
 		BB3C8C5B2B05B56F003D1061 /* VggExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C5A2B05B56F003D1061 /* VggExampleTests.swift */; };
 		BB3C8C652B05B56F003D1061 /* VggExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C642B05B56F003D1061 /* VggExampleUITests.swift */; };
 		BB3C8C672B05B56F003D1061 /* VggExampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C662B05B56F003D1061 /* VggExampleUITestsLaunchTests.swift */; };
+		BBA5BAD32B21C3180015FC2F /* VggCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA5BAD22B21C3180015FC2F /* VggCounter.swift */; };
+		BBA5BAD52B21C4BC0015FC2F /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA5BAD42B21C4BC0015FC2F /* Root.swift */; };
 		BBF28A1F2B0CA761004D8468 /* VggRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3C8C7F2B05C5BD003D1061 /* VggRuntime.framework */; };
 		BBF28A202B0CA761004D8468 /* VggRuntime.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB3C8C7F2B05C5BD003D1061 /* VggRuntime.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BBF28A252B0F2143004D8468 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = BBF28A242B0F2142004D8468 /* Assets */; };
@@ -53,7 +55,7 @@
 /* Begin PBXFileReference section */
 		BB3C8C452B05B56E003D1061 /* VggExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VggExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3C8C482B05B56E003D1061 /* VggExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VggExampleApp.swift; sourceTree = "<group>"; };
-		BB3C8C4A2B05B56E003D1061 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BB3C8C4A2B05B56E003D1061 /* VggJsCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VggJsCounter.swift; sourceTree = "<group>"; };
 		BB3C8C4C2B05B56F003D1061 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB3C8C4E2B05B56F003D1061 /* VggExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VggExample.entitlements; sourceTree = "<group>"; };
 		BB3C8C502B05B56F003D1061 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -63,6 +65,8 @@
 		BB3C8C642B05B56F003D1061 /* VggExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VggExampleUITests.swift; sourceTree = "<group>"; };
 		BB3C8C662B05B56F003D1061 /* VggExampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VggExampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BB3C8C7F2B05C5BD003D1061 /* VggRuntime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VggRuntime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBA5BAD22B21C3180015FC2F /* VggCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VggCounter.swift; sourceTree = "<group>"; };
+		BBA5BAD42B21C4BC0015FC2F /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		BBF28A242B0F2142004D8468 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,7 +122,9 @@
 			children = (
 				BBF28A242B0F2142004D8468 /* Assets */,
 				BB3C8C482B05B56E003D1061 /* VggExampleApp.swift */,
-				BB3C8C4A2B05B56E003D1061 /* ContentView.swift */,
+				BB3C8C4A2B05B56E003D1061 /* VggJsCounter.swift */,
+				BBA5BAD22B21C3180015FC2F /* VggCounter.swift */,
+				BBA5BAD42B21C4BC0015FC2F /* Root.swift */,
 				BB3C8C4C2B05B56F003D1061 /* Assets.xcassets */,
 				BB3C8C4E2B05B56F003D1061 /* VggExample.entitlements */,
 				BB3C8C4F2B05B56F003D1061 /* Preview Content */,
@@ -292,7 +298,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB3C8C4B2B05B56E003D1061 /* ContentView.swift in Sources */,
+				BBA5BAD32B21C3180015FC2F /* VggCounter.swift in Sources */,
+				BBA5BAD52B21C4BC0015FC2F /* Root.swift in Sources */,
+				BB3C8C4B2B05B56E003D1061 /* VggJsCounter.swift in Sources */,
 				BB3C8C492B05B56E003D1061 /* VggExampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,7 +475,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
@@ -505,7 +513,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
