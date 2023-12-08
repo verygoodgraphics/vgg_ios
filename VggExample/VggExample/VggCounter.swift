@@ -19,7 +19,12 @@ struct VggCounter: View {
             let vggViewModel = VggViewModel(filePath: filePath,
                                             delegate: delegate)
             delegate.vggModel = vggViewModel.vggModel;
-            return AnyView(vggViewModel.view())
+            
+            return AnyView( VStack(alignment: .center) {
+                vggViewModel.view()
+                NavigationLink("Open another vgg counter") { VggCounter() }
+                Spacer()
+            })
             
         } else {
             return AnyView(
