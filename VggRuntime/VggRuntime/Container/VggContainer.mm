@@ -1,33 +1,28 @@
 //
-//  VggModel.m
+//  VggContainer.m
 //  VggRuntime
 //
-//  Created by houguanhua on 2023/12/5.
+//  Created by houguanhua on 2023/12/12.
 //  Copyright © 2023 VeryGoodGraphics LTD. All rights reserved.
 //
 
-#import "VggModel.h"
+#import "VggContainer.h"
 
-#import "VGG/VggSdk.hpp"
+#import "VGG/MetalContainer.hpp"
 
-@interface VggModel()
-
-@property (nonatomic, strong, readwrite) NSString* filePath;
-
-@end
-
-@implementation VggModel
+@implementation VggContainer
 {
-    std::shared_ptr<VggSdk> _vggSdk;
+    std::shared_ptr<VGG::MetalContainer> _cppContainer;
+    std::shared_ptr<VGG::ISdk> _vggSdk;
 }
 
-- (instancetype)initWithFilePath:(NSString*)filePath {
+- (instancetype)init
+{
     self = [super init];
-    
-    _filePath = filePath;
-    
-    _vggSdk = std::make_shared<VggSdk>();
-    
+    if (self) {
+        _cppContainer.reset(new VGG::MetalContainer());
+        _vggSdk = _cppContainer->sdk();
+    }
     return self;
 }
 
@@ -56,6 +51,10 @@
 
 - (void)designDocDeletaAt:(NSString*)path {
     _vggSdk->designDocumentDeleteAt(path.UTF8String);
+}
+
+- (void*)cppContainer {
+    return _cppContainer.get();
 }
 
 @end

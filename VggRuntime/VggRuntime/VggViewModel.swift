@@ -10,6 +10,7 @@ import Foundation
 import SwiftUI
 
 open class VggViewModel {
+    public private(set) var vggContainer: VggContainer?
     public private(set) var vggModel: VggModel?
     var vggView: VggView?
     weak var delegate: VggDelegate?
@@ -18,6 +19,7 @@ open class VggViewModel {
         filePath: String,
         delegate:VggDelegate? = nil
     ) {
+        vggContainer = VggContainer()
         vggModel = VggModel(filePath: filePath)
         self.delegate = delegate
     }
@@ -30,6 +32,7 @@ open class VggViewModel {
         } else {
             view = VggView()
         }
+        view.vggContainer = vggContainer
         
         vggView = view
         if let delegate = delegate {

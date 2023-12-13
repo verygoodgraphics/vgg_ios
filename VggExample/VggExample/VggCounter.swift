@@ -18,7 +18,7 @@ struct VggCounter: View {
                                            inDirectory: "Assets") {
             let vggViewModel = VggViewModel(filePath: filePath,
                                             delegate: delegate)
-            delegate.vggModel = vggViewModel.vggModel;
+            delegate.vggContainer = vggViewModel.vggContainer;
             
             return AnyView( VStack(alignment: .center) {
                 vggViewModel.view()
@@ -39,12 +39,12 @@ struct VggCounter: View {
 }
 
 class MyVggDegate: VggDelegate {
-    weak var vggModel: VggModel?
+    weak var vggContainer: VggContainer?
     
     func handleVggEvent(_ type: String, path: String) {
         print("swift handle vgg event:", type, path)
         
-        guard let model = vggModel else {
+        guard let vggContainer = vggContainer else {
             return
         }
         
@@ -55,15 +55,15 @@ class MyVggDegate: VggDelegate {
             let buttonPath = "/frames/0/childObjects/1/style/fills/0/color/alpha"
             switch type {
             case "touchstart":
-                model.designDocReplace(at: buttonPath, value: "1.0")
+                vggContainer.designDocReplace(at: buttonPath, value: "1.0")
                 
             case "touchend":
-                model.designDocReplace(at: buttonPath, value: "0.5")
+                vggContainer.designDocReplace(at: buttonPath, value: "0.5")
                 
                 var count = 0
                 
                 let valuePath = "/frames/0/childObjects/3/content"
-                if let jsonString = model.designDocValue(at: valuePath),
+                if let jsonString = vggContainer.designDocValue(at: valuePath),
                    let countString = try? JSONSerialization.jsonObject(with: Data(jsonString.utf8),
                                                                  options: [.fragmentsAllowed]) as? String,
                     let lastCount = Int(countString) {
@@ -71,7 +71,7 @@ class MyVggDegate: VggDelegate {
                 }
                 
                 count += 1
-                model.designDocReplace(at: valuePath,
+                vggContainer.designDocReplace(at: valuePath,
                                        value: "\"\(count)\"")
             default:
                 break

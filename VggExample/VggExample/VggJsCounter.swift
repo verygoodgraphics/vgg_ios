@@ -14,7 +14,11 @@ struct VggJsCounter: View {
                                            ofType: "daruma",
                                            inDirectory: "Assets") {
             let vggViewModel = VggViewModel(filePath: filePath)
-            return AnyView(vggViewModel.view())
+            return AnyView( VStack(alignment: .center) {
+                vggViewModel.view()
+                NavigationLink("Open another vgg js counter") { VggJsCounter() }
+                Spacer()
+            })
             
         } else {
             return AnyView(

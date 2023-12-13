@@ -8,6 +8,8 @@
 
 #import <MetalKit/MetalKit.h>
 
+#import <VggRuntime/VggContainer.h>
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface VggRenderView : MTKView
 
 @property (nonatomic, weak) id<VggDelegate> vggDelegate;
+@property (nonatomic, weak, nullable) VggContainer* vggContainer;
 
 - (instancetype)initWithFrame:(CGRect)frameRect;
 

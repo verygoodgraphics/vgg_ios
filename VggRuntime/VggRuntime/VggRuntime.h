@@ -17,5 +17,6 @@ FOUNDATION_EXPORT const unsigned char VggRuntimeVersionString[];
 
 #import <VggRuntime/VggModel.h>
 #import <VggRuntime/VggRenderView.h>
+#import <VggRuntime/VggContainer.h>
 
 

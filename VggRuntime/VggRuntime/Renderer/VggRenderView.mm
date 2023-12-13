@@ -8,6 +8,7 @@
 
 #import "VggRenderView.h"
 
+#import "VGGContainer.h"
 #import "VGG/MetalContainer.hpp"
 
 #import <memory>
@@ -18,7 +19,6 @@ using namespace VGG;
 @implementation VggRenderView
 {
     NSString* _modelFilePath;
-    std::unique_ptr<VGG::MetalContainer> _container;
     bool _initialized;
     CGSize _size;
 }
@@ -35,7 +35,6 @@ using namespace VGG;
 {
     auto metalDevice = MTLCreateSystemDefaultDevice();
     auto result = [super initWithFrame:frameRect device:metalDevice];
-    _container.reset(new VGG::MetalContainer());
     _size = self.frame.size;
     
     return result;
@@ -60,7 +59,8 @@ using namespace VGG;
             evt.window.data2 = _size.height;
             evt.window.drawableWidth = _size.width * self.contentScaleFactor;
             evt.window.drawableHeight = _size.height * self.contentScaleFactor;
-            _container->onEvent(evt);
+            
+            [self cppContainerOnEvent:evt];
         }
         
     }
@@ -72,7 +72,9 @@ using namespace VGG;
     [super drawRect:rect];
     
     if(_modelFilePath) {
-        _container->run();
+        if (auto theCppContainer = [self cppContainer]) {
+            theCppContainer->run();
+        }
     }
 }
 
@@ -80,9 +82,15 @@ using namespace VGG;
 - (void)setVggDelegate:(id<VggDelegate>)vggDelegate
 {
     _vggDelegate = vggDelegate;
+    
+    auto theCppContainer = [self cppContainer];
+    if (!theCppContainer) {
+        return;
+    }
+    
     if (_vggDelegate) {
         __weak typeof(self) weakSelf = self;
-        _container->setEventListener([weakSelf](std::string type, std::string path) {
+        theCppContainer->setEventListener([weakSelf](std::string type, std::string path) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
             if (strongSelf) {
                 [strongSelf.vggDelegate handleVggEvent: [NSString stringWithUTF8String:type.c_str()]
@@ -90,7 +98,7 @@ using namespace VGG;
             }
         });
     } else {
-        _container->setEventListener(nullptr);
+        theCppContainer->setEventListener(nullptr);
     }
 }
 
@@ -111,8 +119,10 @@ using namespace VGG;
     [self setColorPixelFormat:MTLPixelFormatRGBA8Unorm];
     [self setSampleCount:1];
     
-    _container->setView((__bridge MetalContainer::MTLHandle)self);
-    _container->load(_modelFilePath.UTF8String);
+    if (auto theCppContainer = [self cppContainer]) {
+        theCppContainer->setView((__bridge MetalContainer::MTLHandle)self);
+        theCppContainer->load(_modelFilePath.UTF8String);
+    }
 }
 
 // MARK: -
@@ -129,8 +139,7 @@ using namespace VGG;
     evt.touch.windowX = location.x;
     evt.touch.windowY = location.y;
     
-    _container->onEvent(evt);
-    
+    [self cppContainerOnEvent:evt];
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -149,8 +158,7 @@ using namespace VGG;
     evt.touch.xrel = location.x - previousLocation.x;
     evt.touch.yrel = location.y - previousLocation.y;
     
-    _container->onEvent(evt);
-    
+    [self cppContainerOnEvent:evt];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -166,8 +174,19 @@ using namespace VGG;
     evt.touch.windowX = location.x;
     evt.touch.windowY = location.y;
     
-    _container->onEvent(evt);
+    [self cppContainerOnEvent:evt];
+}
 
+// MARK: -
+- (VGG::MetalContainer*)cppContainer {
+    return (VGG::MetalContainer *)[self.vggContainer cppContainer];
+}
+
+- (void)cppContainerOnEvent:(UEvent)event {
+    auto cppContainer = [self cppContainer];
+    if (cppContainer) {
+        cppContainer->onEvent(event);
+    }
 }
 
 @end
