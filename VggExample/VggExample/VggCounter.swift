@@ -41,14 +41,14 @@ struct VggCounter: View {
 class MyVggDegate: VggDelegate {
     weak var vggContainer: VggContainer?
     
-    func handleVggEvent(_ type: String, path: String) {
-        print("swift handle vgg event:", type, path)
+    func handleVggEvent(_ type: String, targetId: String, targetPath: String) {
+        print("swift handle vgg event:", type, targetId, targetPath)
         
         guard let vggContainer = vggContainer else {
             return
         }
         
-        switch path {
+        switch targetPath {
         case "/frames/0/childObjects/1":
             fallthrough
         case "/frames/0/childObjects/2":
