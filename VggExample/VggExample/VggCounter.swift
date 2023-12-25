@@ -48,10 +48,10 @@ class MyVggDegate: VggDelegate {
             return
         }
         
-        switch targetPath {
-        case "/frames/0/childObjects/1":
+        switch targetId {
+        case "#counterButtonText":
             fallthrough
-        case "/frames/0/childObjects/2":
+        case "#counterButton":
             let buttonPath = "/frames/0/childObjects/1/style/fills/0/color/alpha"
             switch type {
             case "touchstart":
