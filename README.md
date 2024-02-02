@@ -22,13 +22,12 @@ Open the Vgg.xcworkspace in XCode and select the VggRuntime scheme.
 
 ## Usage
 ### SwiftUI
-1. Importing VggRuntime
-Add the following to the top of your file where you utilize the VggRuntime:
+1. Importing VggRuntime. Add the following to the top of your file where you utilize the VggRuntime.
 ```
 import VggRuntime
 ```
 
-2. Setup VggViewModel and use VggView
+2. Setup VggViewModel and use VggView.
 ```
 struct VggCounter: View {
     var body: some View {
