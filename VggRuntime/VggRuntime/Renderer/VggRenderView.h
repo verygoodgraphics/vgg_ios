@@ -14,7 +14,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol VggDelegate
-- (void)handleVggEvent:(NSString*)type targetId:(NSString*)targetId targetPath:(NSString*)targetPath;
+- (void)handleVggEvent:(NSString*)type targetId:(NSString*)targetId targetName:(NSString*)targetName;
 @end
 
 @interface VggRenderView : MTKView

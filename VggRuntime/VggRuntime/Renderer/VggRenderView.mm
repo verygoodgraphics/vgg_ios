@@ -90,12 +90,12 @@ using namespace VGG;
     
     if (_vggDelegate) {
         __weak typeof(self) weakSelf = self;
-        theCppContainer->setEventListener([weakSelf](std::string type, std::string targetId, std::string targetPath) {
+        theCppContainer->setEventListener([weakSelf](std::string type, std::string targetId, std::string targetName) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
             if (strongSelf) {
                 [strongSelf.vggDelegate handleVggEvent: [NSString stringWithUTF8String:type.c_str()]
                                               targetId: [NSString stringWithUTF8String:targetId.c_str()]
-                                            targetPath: [NSString stringWithUTF8String:targetPath.c_str()]];
+                                            targetName: [NSString stringWithUTF8String:targetName.c_str()]];
             }
         });
     } else {

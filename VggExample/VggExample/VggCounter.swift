@@ -41,38 +41,21 @@ struct VggCounter: View {
 class MyVggDegate: VggDelegate {
     weak var vggContainer: VggContainer?
     
-    func handleVggEvent(_ type: String, targetId: String, targetPath: String) {
-        print("swift handle vgg event:", type, targetId, targetPath)
+    func handleVggEvent(_ type: String, targetId: String, targetName: String) {
+        print("swift handle vgg event:", type, targetId, targetName)
         
-        guard let vggContainer = vggContainer else {
-            return
-        }
-        
-        switch targetId {
+        switch targetName {
         case "#counterButtonText":
             fallthrough
         case "#counterButton":
-            let buttonPath = "/frames/0/childObjects/1/style/fills/0/color/alpha"
             switch type {
             case "touchstart":
-                vggContainer.designDocReplace(at: buttonPath, value: "1.0")
+                updateElement(id: "#counterButton", alpha: 1.0)
                 
             case "touchend":
-                vggContainer.designDocReplace(at: buttonPath, value: "0.5")
+                updateElement(id: "#counterButton", alpha: 0.5)
+                updateCountText(id: "#count")
                 
-                var count = 0
-                
-                let valuePath = "/frames/0/childObjects/3/content"
-                if let jsonString = vggContainer.designDocValue(at: valuePath),
-                   let countString = try? JSONSerialization.jsonObject(with: Data(jsonString.utf8),
-                                                                 options: [.fragmentsAllowed]) as? String,
-                    let lastCount = Int(countString) {
-                    count = lastCount
-                }
-                
-                count += 1
-                vggContainer.designDocReplace(at: valuePath,
-                                       value: "\"\(count)\"")
             default:
                 break
             }
@@ -80,6 +63,49 @@ class MyVggDegate: VggDelegate {
             break
         }
         
+    }
+    
+    func updateElement(id:String, alpha:Float) {
+        guard let vggContainer = vggContainer else { return }
+        guard let e = vggContainer.element(byId: id) else { return }
+        
+        if var o = try? JSONSerialization.jsonObject(with: Data(e.utf8)) as? [String:Any] {
+            if var style = o["style"] as? [String:Any] {
+                if var fills = style["fills"] as? [Any] {
+                    if var fill = fills[0] as? [String:Any] {
+                        if var color = fill["color"] as? [String:Any]{
+                            color["alpha"] = alpha
+                            fill["color"]  = color
+                        }
+                        fills[0] = fill
+                    }
+                    style["fills"] = fills
+                }
+                o["style"] = style
+            }
+            if let d = try? JSONSerialization.data(withJSONObject: o) {
+                let s = String(decoding: d, as: UTF8.self)
+                vggContainer.updateElement(byId:id, content: s)
+            }
+        }
+    }
+    
+    func updateCountText(id:String) {
+        guard let vggContainer = vggContainer else { return }
+        guard let e = vggContainer.element(byId: id) else { return }
+        
+        if let o = try? JSONSerialization.jsonObject(with: Data(e.utf8)) as? [String:Any] {
+            var count = 0
+            if let content = o["content"] as? String, let lastCount = Int(content) {
+                count = lastCount
+            }
+            count += 1
+            let patch = ["content": String(count)]
+            if let d = try? JSONSerialization.data(withJSONObject: patch) {
+                let s = String(decoding: d, as: UTF8.self)
+                vggContainer.updateElement(byId:id, content: s)
+            }
+        }
     }
 }
 

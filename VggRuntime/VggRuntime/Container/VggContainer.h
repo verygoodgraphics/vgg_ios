@@ -14,9 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString*)designDoc;
 - (nullable NSString*)designDocValueAt:(NSString*)path;
-- (void)designDocAddAt:(NSString*)path value:(NSString*)value;
-- (void)designDocReplaceAt:(NSString*)path value:(NSString*)value;
-- (void)designDocDeletaAt:(NSString*)path;
+
+- (nullable NSString*)elementById:(NSString*)idString;
+- (void)updateElementById:(NSString*)idString content:(NSString*)jsonString;
 
 - (void*)cppContainer;
 

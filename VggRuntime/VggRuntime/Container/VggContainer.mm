@@ -41,17 +41,20 @@
     }
 }
 
-- (void)designDocAddAt:(NSString*)path value:(NSString*)value {
-    _vggSdk->designDocumentAddAt(path.UTF8String, value.UTF8String);
+- (nullable NSString*)elementById:(NSString*)idString {
+    const auto& value = _vggSdk->getElement(idString.UTF8String);
+    if (!value.empty()) {
+        return [NSString stringWithUTF8String:value.c_str()];
+    } else {
+        return nil;
+    }
 }
 
-- (void)designDocReplaceAt:(NSString*)path value:(NSString*)value {
-    _vggSdk->designDocumentReplaceAt(path.UTF8String, value.UTF8String);
+- (void)updateElementById:(NSString*)idString content:(NSString*)jsonString {
+     _vggSdk->updateElement(idString.UTF8String, jsonString.UTF8String);
 }
 
-- (void)designDocDeletaAt:(NSString*)path {
-    _vggSdk->designDocumentDeleteAt(path.UTF8String);
-}
+
 
 - (void*)cppContainer {
     return _cppContainer.get();
