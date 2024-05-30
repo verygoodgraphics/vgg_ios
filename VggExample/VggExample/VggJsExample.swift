@@ -10,7 +10,7 @@ import SwiftUI
 import VggRuntime
 
 struct VggJsExample: View {
-    var fileName:String = "prototype1"
+    var fileName:String = "prototype3"
     
     var body: some View {
         if let filePath = Bundle.main.path(forResource: fileName,
