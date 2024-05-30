@@ -14,6 +14,7 @@
 		BB3C8C5B2B05B56F003D1061 /* VggExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C5A2B05B56F003D1061 /* VggExampleTests.swift */; };
 		BB3C8C652B05B56F003D1061 /* VggExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C642B05B56F003D1061 /* VggExampleUITests.swift */; };
 		BB3C8C672B05B56F003D1061 /* VggExampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C662B05B56F003D1061 /* VggExampleUITestsLaunchTests.swift */; };
+		BB5A72C42C084D990055D769 /* VggJsExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5A72C32C084D990055D769 /* VggJsExample.swift */; };
 		BBA5BAD32B21C3180015FC2F /* VggCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA5BAD22B21C3180015FC2F /* VggCounter.swift */; };
 		BBA5BAD52B21C4BC0015FC2F /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA5BAD42B21C4BC0015FC2F /* Root.swift */; };
 		BBF28A1F2B0CA761004D8468 /* VggRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3C8C7F2B05C5BD003D1061 /* VggRuntime.framework */; };
@@ -65,6 +66,7 @@
 		BB3C8C642B05B56F003D1061 /* VggExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VggExampleUITests.swift; sourceTree = "<group>"; };
 		BB3C8C662B05B56F003D1061 /* VggExampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VggExampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BB3C8C7F2B05C5BD003D1061 /* VggRuntime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VggRuntime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB5A72C32C084D990055D769 /* VggJsExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VggJsExample.swift; sourceTree = "<group>"; };
 		BBA5BAD22B21C3180015FC2F /* VggCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VggCounter.swift; sourceTree = "<group>"; };
 		BBA5BAD42B21C4BC0015FC2F /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		BBF28A242B0F2142004D8468 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				BBF28A242B0F2142004D8468 /* Assets */,
 				BB3C8C482B05B56E003D1061 /* VggExampleApp.swift */,
 				BB3C8C4A2B05B56E003D1061 /* VggJsCounter.swift */,
+				BB5A72C32C084D990055D769 /* VggJsExample.swift */,
 				BBA5BAD22B21C3180015FC2F /* VggCounter.swift */,
 				BBA5BAD42B21C4BC0015FC2F /* Root.swift */,
 				BB3C8C4C2B05B56F003D1061 /* Assets.xcassets */,
@@ -301,6 +304,7 @@
 				BBA5BAD32B21C3180015FC2F /* VggCounter.swift in Sources */,
 				BBA5BAD52B21C4BC0015FC2F /* Root.swift in Sources */,
 				BB3C8C4B2B05B56E003D1061 /* VggJsCounter.swift in Sources */,
+				BB5A72C42C084D990055D769 /* VggJsExample.swift in Sources */,
 				BB3C8C492B05B56E003D1061 /* VggExampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

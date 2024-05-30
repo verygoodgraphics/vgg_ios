@@ -28,6 +28,11 @@
     return self;
 }
 
+// MARK: - configure
+- (void)setFitToViewportEnabled:(bool)enabled {
+    _vggSdk->setFitToViewportEnabled(enabled);
+}
+
 // MARK: - design document
 - (NSString*)designDoc {
     const auto& content = _vggSdk->designDocument();
@@ -57,7 +62,7 @@
 }
 
 
-
+// MARK: -
 - (void*)cppContainer {
     return _cppContainer.get();
 }

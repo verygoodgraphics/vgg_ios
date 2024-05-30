@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface VggContainer : NSObject
 
+- (void)setFitToViewportEnabled:(bool)enabled;
+
 - (NSString*)designDoc;
 - (nullable NSString*)designDocValueAt:(NSString*)path;
 

@@ -13,7 +13,8 @@ struct Root: View {
         NavigationStack {
             List {
                 NavigationLink("Counter with code in swift") { VggCounter() }
-                NavigationLink("Counter with code in js") { VggJsCounter()}
+                NavigationLink("Counter with code in js") { VggJsCounter() }
+                NavigationLink("Prototype interactions") { VggJsExample() }
             }
             .navigationTitle("Vgg Examples")
         }
