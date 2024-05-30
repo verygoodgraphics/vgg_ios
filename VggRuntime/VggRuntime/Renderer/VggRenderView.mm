@@ -136,9 +136,10 @@ using namespace VGG;
     auto location = [touch locationInView:self];
     
     UEvent evt;
-    evt.touch.type = VGG_TOUCHDOWN;
-    evt.touch.windowX = location.x;
-    evt.touch.windowY = location.y;
+    evt.type = VGG_MOUSEBUTTONDOWN;
+    evt.button.button = 1;
+    evt.button.windowX = location.x;
+    evt.button.windowY = location.y;
     
     [self cppContainerOnEvent:evt];
 }
@@ -153,11 +154,11 @@ using namespace VGG;
     auto location = [touch locationInView:self];
     
     UEvent evt;
-    evt.touch.type = VGG_TOUCHMOTION;
-    evt.touch.windowX = location.x;
-    evt.touch.windowY = location.y;
-    evt.touch.xrel = location.x - previousLocation.x;
-    evt.touch.yrel = location.y - previousLocation.y;
+    evt.type = VGG_MOUSEMOTION;
+    evt.motion.windowX = location.x;
+    evt.motion.windowY = location.y;
+    evt.motion.xrel = location.x - previousLocation.x;
+    evt.motion.yrel = location.y - previousLocation.y;
     
     [self cppContainerOnEvent:evt];
 }
@@ -171,9 +172,10 @@ using namespace VGG;
     auto location = [touch locationInView:self];
     
     UEvent evt;
-    evt.touch.type = VGG_TOUCHUP;
-    evt.touch.windowX = location.x;
-    evt.touch.windowY = location.y;
+    evt.type = VGG_MOUSEBUTTONUP;
+    evt.button.button = 1;
+    evt.button.windowX = location.x;
+    evt.button.windowY = location.y;
     
     [self cppContainerOnEvent:evt];
 }

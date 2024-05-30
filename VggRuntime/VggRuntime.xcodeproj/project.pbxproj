@@ -18,6 +18,7 @@
 		BB3C8C772B05B8BD003D1061 /* VggRenderView.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C752B05B8BD003D1061 /* VggRenderView.mm */; };
 		BB3C8C792B05B9F1003D1061 /* VggView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C782B05B9F1003D1061 /* VggView.swift */; };
 		BB3C8C7B2B05BE3B003D1061 /* VggViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3C8C7A2B05BE3B003D1061 /* VggViewModel.swift */; };
+		BB5A72C12C08480F0055D769 /* VggEventAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB5A72C02C08480F0055D769 /* VggEventAdapter.mm */; };
 		BBA5BAD82B2855FA0015FC2F /* VggContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = BBA5BAD62B2855FA0015FC2F /* VggContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BBA5BAD92B2855FA0015FC2F /* VggContainer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BBA5BAD72B2855FA0015FC2F /* VggContainer.mm */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,8 @@
 		BB3C8C752B05B8BD003D1061 /* VggRenderView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = VggRenderView.mm; sourceTree = "<group>"; };
 		BB3C8C782B05B9F1003D1061 /* VggView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VggView.swift; sourceTree = "<group>"; };
 		BB3C8C7A2B05BE3B003D1061 /* VggViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VggViewModel.swift; sourceTree = "<group>"; };
+		BB5A72C02C08480F0055D769 /* VggEventAdapter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = VggEventAdapter.mm; sourceTree = "<group>"; };
+		BB5A72C22C0848220055D769 /* VggEventAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VggEventAdapter.h; sourceTree = "<group>"; };
 		BBA5BAD62B2855FA0015FC2F /* VggContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VggContainer.h; sourceTree = "<group>"; };
 		BBA5BAD72B2855FA0015FC2F /* VggContainer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = VggContainer.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +156,8 @@
 			children = (
 				BBA5BAD62B2855FA0015FC2F /* VggContainer.h */,
 				BBA5BAD72B2855FA0015FC2F /* VggContainer.mm */,
+				BB5A72C22C0848220055D769 /* VggEventAdapter.h */,
+				BB5A72C02C08480F0055D769 /* VggEventAdapter.mm */,
 			);
 			path = Container;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 				BB3C8C792B05B9F1003D1061 /* VggView.swift in Sources */,
 				BBA5BAD92B2855FA0015FC2F /* VggContainer.mm in Sources */,
 				BB0A7CAE2B1EFF0700D349BE /* VggModel.m in Sources */,
+				BB5A72C12C08480F0055D769 /* VggEventAdapter.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

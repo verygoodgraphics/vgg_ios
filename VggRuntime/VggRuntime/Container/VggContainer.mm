@@ -7,6 +7,7 @@
 //
 
 #import "VggContainer.h"
+#import "VggEventAdapter.h"
 
 #import "VGG/MetalContainer.hpp"
 
@@ -22,6 +23,7 @@
     if (self) {
         _cppContainer.reset(new VGG::MetalContainer());
         _vggSdk = _cppContainer->sdk();
+        vgg::ios::adapter::VggEventAdapter::setup();
     }
     return self;
 }
